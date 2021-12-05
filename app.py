@@ -1,11 +1,7 @@
 from flask import Flask, render_template, request
 import pickle
-import os
-
-port = int(os.environ.get('PORT', 5000))
 
 app = Flask(__name__)
-app.run(host='0.0.0.0', port=port, debug=True)
 
 model_decision_tree = pickle.load(open('model_decision_tree.pkl', 'rb'))
 model_random_forest = pickle.load(open('model_random_forest.pkl', 'rb'))
