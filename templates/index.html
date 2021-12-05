@@ -18,7 +18,7 @@
     <h1 class="ui header">Web Phising Prediction</h1>
     <p>Silahkan masukkan data yang sesuai dengan website Anda</p>
 
-    <form class="ui form" action="" method="POST">
+    <form class="ui form" action="/predict" method="POST">
       <div class="field">
         <div class="three fields">
           <div class="field">
@@ -69,7 +69,7 @@
               <div class="ui radio checkbox">
                 <input
                   type="radio"
-                  name="ssl-final-state"
+                  name="ssl_final_state"
                   value="1"
                   id="sfs-legit"
                 />
@@ -82,7 +82,7 @@
               <div class="ui radio checkbox">
                 <input
                   type="radio"
-                  name="ssl-final-state"
+                  name="ssl_final_state"
                   value="0"
                   id="sfs-suspicious"
                 />
@@ -95,7 +95,7 @@
               <div class="ui radio checkbox">
                 <input
                   type="radio"
-                  name="ssl-final-state"
+                  name="ssl_final_state"
                   value="-1"
                   id="sfs-phishy"
                 />
@@ -185,15 +185,41 @@
       <div class="field">
         <button class="ui primary button" type="submit">Prediksi</button>
       </div>
+      {% if prediction_DS and prediction_RF and prediction_SVM %}
       <div class="ui info message">
         <div class="header">Hasil Prediksi</div>
         <ul class="list">
-          <li>Random Forest Classifier : <strong>Legit</strong></li>
-          <li>Decision Tree Classifier : <strong>Legit</strong></li>
-          <li>Grid SVC : <strong>Legit</strong></li>
+          <li>
+            Random Forest Classifier : <strong>{{ prediction_DS }}</strong>
+          </li>
+          <li>
+            Decision Tree Classifier : <strong>{{ prediction_RF }}</strong>
+          </li>
+          <li>Grid SVC : <strong>{{ prediction_SVM }}</strong></li>
         </ul>
       </div>
+      {% endif %}
     </form>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script>
+      $(".ui.form").form({
+        fields: {
+          age_of_domain: "empty",
+          url_length: "empty",
+          req_url: "empty",
+          rank: "empty",
+          url_of_anchor: "empty",
+          ip_address: "checked",
+          ssl_final_state: "checked",
+          puw: "checked",
+          sfh: "checked",
+        },
+      });
+    </script>
   </body>
 </html>
