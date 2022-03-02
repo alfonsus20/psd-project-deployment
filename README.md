@@ -18,6 +18,7 @@ You can just open the website by clicking the deployment link on the about secti
 This website uses monolith infrastucture. Frameworks that we use:
 - Flask (Backend)
 - Semantic UI (Frontend)
+- Heroku (Deployment and CI/CD)
 
 ## Contributing to This Project
 Pull requests are welcome anytime. You can fork this project, make new branch according to the feature or bug fixing that you want to do. Then, you can do pull request to this project.
